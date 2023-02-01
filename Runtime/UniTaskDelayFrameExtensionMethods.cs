@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Kogane
@@ -12,6 +13,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.DelayFrame
             (
                 delayFrameCount: delayFrameCount,
@@ -27,6 +30,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.DelayFrame
             (
                 delayFrameCount: delayFrameCount,

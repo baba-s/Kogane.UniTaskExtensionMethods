@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Kogane
@@ -11,6 +12,8 @@ namespace Kogane
             PlayerLoopTiming timing = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.WaitUntilCanceled
             (
                 timing: timing,
@@ -24,6 +27,8 @@ namespace Kogane
             PlayerLoopTiming timing = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.WaitUntilCanceled( timing );
         }
     }

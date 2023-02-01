@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Kogane
 {
-    public static class UniTaskWaitWhileExtensionMethods
+    public static class UniTaskWaitUntilExtensionMethods
     {
-        public static UniTask WaitWhile
+        public static UniTask WaitUntil
         (
             this GameObject  self,
             Func<bool>       predicate,
@@ -15,7 +15,7 @@ namespace Kogane
         {
             if ( self == null ) throw new OperationCanceledException();
 
-            return UniTask.WaitWhile
+            return UniTask.WaitUntil
             (
                 predicate: predicate,
                 timing: timing,
@@ -23,7 +23,7 @@ namespace Kogane
             );
         }
 
-        public static UniTask WaitWhile
+        public static UniTask WaitUntil
         (
             this Component   self,
             Func<bool>       predicate,
@@ -32,7 +32,7 @@ namespace Kogane
         {
             if ( self == null ) throw new OperationCanceledException();
 
-            return self.gameObject.WaitWhile
+            return self.gameObject.WaitUntil
             (
                 predicate: predicate,
                 timing: timing

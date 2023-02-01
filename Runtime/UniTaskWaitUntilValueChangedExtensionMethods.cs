@@ -16,6 +16,8 @@ namespace Kogane
             IEqualityComparer<U> equalityComparer = null
         ) where T : class
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.WaitUntilValueChanged
             (
                 target: target,
@@ -35,6 +37,8 @@ namespace Kogane
             IEqualityComparer<U> equalityComparer = null
         ) where T : class
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.WaitUntilValueChanged
             (
                 target: target,

@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Kogane
@@ -11,6 +12,8 @@ namespace Kogane
             MonoBehaviour   coroutineRunner
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.WaitForEndOfFrame
             (
                 coroutineRunner,
@@ -24,11 +27,15 @@ namespace Kogane
             MonoBehaviour  coroutineRunner
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.WaitForEndOfFrame( coroutineRunner );
         }
 
         public static UniTask WaitForEndOfFrame( this MonoBehaviour self )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.WaitForEndOfFrame( self );
         }
     }

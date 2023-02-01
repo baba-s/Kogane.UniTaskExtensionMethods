@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Kogane
@@ -7,11 +8,15 @@ namespace Kogane
     {
         public static UniTask Yield( this GameObject self )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.Yield( self.GetCancellationTokenOnDestroy() );
         }
 
         public static UniTask Yield( this Component self )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.Yield();
         }
 
@@ -21,6 +26,8 @@ namespace Kogane
             PlayerLoopTiming timing
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.Yield
             (
                 timing: timing,
@@ -34,6 +41,8 @@ namespace Kogane
             PlayerLoopTiming timing
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return Yield( self.gameObject, timing );
         }
     }

@@ -14,6 +14,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming     = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.Delay
             (
                 millisecondsDelay: millisecondsDelay,
@@ -31,6 +33,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming     = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.Delay
             (
                 millisecondsDelay: millisecondsDelay,
@@ -47,6 +51,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming     = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.Delay
             (
                 delayTimeSpan: delayTimeSpan,
@@ -64,6 +70,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming     = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.Delay
             (
                 delayTimeSpan: delayTimeSpan,
@@ -80,6 +88,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.Delay
             (
                 millisecondsDelay: millisecondsDelay,
@@ -97,6 +107,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.Delay
             (
                 millisecondsDelay: millisecondsDelay,
@@ -113,6 +125,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.Delay
             (
                 delayTimeSpan: delayTimeSpan,
@@ -130,6 +144,8 @@ namespace Kogane
             PlayerLoopTiming delayTiming = PlayerLoopTiming.Update
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.Delay
             (
                 delayTimeSpan: delayTimeSpan,

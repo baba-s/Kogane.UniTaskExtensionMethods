@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -8,11 +9,15 @@ namespace Kogane
     {
         public static UniTask NextFrame( this GameObject self )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return UniTask.NextFrame( self.GetCancellationTokenOnDestroy() );
         }
 
         public static UniTask NextFrame( this Component self )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.NextFrame();
         }
 
@@ -22,6 +27,8 @@ namespace Kogane
             PlayerLoopTiming timing
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             await UniTask.NextFrame
             (
                 timing: timing,
@@ -35,6 +42,8 @@ namespace Kogane
             PlayerLoopTiming timing
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             await self.gameObject.NextFrame( timing );
         }
 
@@ -44,6 +53,8 @@ namespace Kogane
             CancellationToken cancellationToken
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             var cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource
             (
                 cancellationToken,
@@ -59,6 +70,8 @@ namespace Kogane
             CancellationToken cancellationToken
         )
         {
+            if ( self == null ) throw new OperationCanceledException();
+
             return self.gameObject.NextFrame( cancellationToken );
         }
     }
